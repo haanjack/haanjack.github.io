@@ -14,7 +14,7 @@ disqus_username: haanjack
 # Build settings
 markdown: kramdown
 
-highlighter: pygments
+highlighter: rouge
 
 # Pagination
 plugins: ['jekyll-paginate', 'jekyll-mermaid']
