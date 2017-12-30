@@ -13,7 +13,7 @@ permalink: /about/
 
 # Foot Notes
 
-* NVIDIA Korea - Solutions Architect
+* NVIDIA Korea - Solutions Architect **(Current)**
 * 현대중공업 - 수술용 로봇 개발
 * 삼성메디슨 - 초음파 기기 제어 및 영상처리 모듈 개발
 * 서울대학교 컴퓨터공학과 통합설계 및 병렬처리연구실
