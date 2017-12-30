@@ -4,6 +4,7 @@ title:  "Debian docker에 Theano 설치하기"
 date:   2016-03-16 00:00:00
 categories: Machine Learning
 description: nVidia docker 이미지 기반 Python/Theano 개발 환경 구축 (GPU/CPU)
+published: false
 tags:
 - Theano
 - CUDA
@@ -25,7 +26,7 @@ Theano는 Machine Learning에 필요한 알고리즘을 제공하는 Python Libr
 ## GPU(CUDA)를 사용하는 경우
 
 > 필요한것
-> 
+>
 > CUDA 개발환경이 구축이 된 Linux 환경 (설치방법은 별도의 포스트에서 참조)
 > CUDA를 사용할 수 있는 Dockerfile 및 docker가 설치된 linux 환경
 
@@ -202,7 +203,7 @@ $ docker build -t metal/cuda/theano .
 {% endhighlight %}
 
 
-그러면 meta/cuda/theano와 같이 사용자가 원하는 이미지 명을 가진 docker image가 생성 될 것이다. 
+그러면 meta/cuda/theano와 같이 사용자가 원하는 이미지 명을 가진 docker image가 생성 될 것이다.
 
 ### CPU만을 사용하는 경우
 

@@ -4,6 +4,7 @@ title:  "Linear Regression - I"
 date:   2016-03-30 2:00:00
 categories: Machine Learning
 description: Linear Regression for single & multiple variables
+published: false
 tags:
 - Machine Learning
 - Linear Regression
@@ -15,7 +16,7 @@ tags:
 ## 변수 하나(one variable)에 대한 Linear Regression
 
 ### 모델
-앞서 설명한대로 **Regression** 문제는 연속적인 결화를 도출하는 함수에 대한 예측을 하는 문제이다. 여기서 살펴볼 문제는 변수 하나에 대한 Regression이므로 Univariate linear regression이라고도 불린다. 
+앞서 설명한대로 **Regression** 문제는 연속적인 결화를 도출하는 함수에 대한 예측을 하는 문제이다. 여기서 살펴볼 문제는 변수 하나에 대한 Regression이므로 Univariate linear regression이라고도 불린다.
 
 단일 변수에 대한 Linear Regression은 하나의 입력값에 대한 하나의 출력을 특징인 예측을 하는 경우에 유용하다. 또한 Supervised Learning을 사용하는데, 이는 우리가 특정 입력에 대하여 어떤 결과가 나와야 하는지 알고 있기 때문이다.
 
@@ -108,12 +109,12 @@ $$ \theta _1 = \theta _1 - \alpha \frac {1} {m} \sum ^m _{i=1} (h _\theta (x(i))
   <tr>
     <td style="text-align: center;">$x _2$</td>
     <td style="text-align: center;">침실 개수</td>
-    
+
   </tr>
   <tr>
     <td style="text-align: center;">$x _3$</td>
     <td style="text-align: center;">층수</td>
-    
+
   </tr>
   <tr>
     <td style="text-align: center;">$x _4$</td>
@@ -150,12 +151,12 @@ $J(\theta) = \frac {1} {2m} \sum^m_{i=1} ((h_\theta (x^{(i)})) - y^{(i)})^2 \ens
 
 #### Single Variable
 
-$\theta _j = \theta _j - \alpha \frac {1} {m} \sum ^m _{i=1} (h _\theta (x(i)) - y(i)) x _j(i)$ 
+$\theta _j = \theta _j - \alpha \frac {1} {m} \sum ^m _{i=1} (h _\theta (x(i)) - y(i)) x _j(i)$
 
 $simultaneously \enspace update \enspace \theta _0, \theta _1 \enspace for \enspace j = 0, j = 1$
 
 #### Multi-Variable $(n=4)$
-  
+
 $\theta _j = \theta _j - \alpha \frac {1} {m} \sum ^m _{i=1} (h _\theta (x(i)) - y(i)) x _j(i)$
 
 $simultaneously \enspace update \enspace \theta \enspace for \enspace j = 0, 1, ..., n$

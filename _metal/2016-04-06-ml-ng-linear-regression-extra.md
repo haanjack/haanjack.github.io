@@ -4,6 +4,7 @@ title:  "Linear Regression - II"
 date:   2016-04-06 01:00:00
 categories: Machine Learning
 description: Linear Regression을 더 잘하기 위해서 고려해야 할 사항
+published: false
 tags:
 - Machine Learning
 - Linear Regression
@@ -21,7 +22,7 @@ tags:
 
 # Feature Scaling
 
-여러개의 Feature가 있을 때, 유사한 Scale을 갖도록 Feature Normalization을 해주어야 한다. 
+여러개의 Feature가 있을 때, 유사한 Scale을 갖도록 Feature Normalization을 해주어야 한다.
 만약 $\theta _1$이 $\theta _2$에 비해서 매우 크다면 아래 그림과 같이 일그러진 형태의 Cost 평면을 형성하게 된다. 이는 수렴하는 방향에도 영향을 주어, global minimum 값을 찾는 시간을 지연시키게 된다.
 <img class="col one center" src="/images/201604/2F86C27F-0847-49DA-961E-64CECA157187.png"/>
 
@@ -59,7 +60,7 @@ $\alpha$ 값은 **learning rate**로서 gradient 값을 반영하는 인자로�
 # Features and Polynomial Regression
 
 ## Features
-learning에 유의미한 feature들을 선택한다. 또한 필요에 따라서 feature를 추가할수도 있다. 
+learning에 유의미한 feature들을 선택한다. 또한 필요에 따라서 feature를 추가할수도 있다.
 
 ## Polynomial Regression
 
@@ -75,7 +76,7 @@ polynomial regresion을 사용하게 되면 선을 이용하는 것보다 더 �
 
 # Normal Equation
 
-Learning parameter $\theta$를 구하기 위해서 대표적으로 사용되는 것이 Gradient Descent이다. Coursera 강좌에서는 이것 되에도 직접적으로 $\theta$를 계산할 수 있는 방법으로 **Normal Equation**을 제시하고 있다. 
+Learning parameter $\theta$를 구하기 위해서 대표적으로 사용되는 것이 Gradient Descent이다. Coursera 강좌에서는 이것 되에도 직접적으로 $\theta$를 계산할 수 있는 방법으로 **Normal Equation**을 제시하고 있다.
 
 이를테면, Gradient Descent는 Cost function의 gradient를 계속해서 추적해가면서 cost가 최소인 parameter를 찾는 방법이지만, Matrix 연산만으로도 $\theta$를 찾을 수 있는 것이다.
 
@@ -99,5 +100,3 @@ $$\theta = (X^T X)^{-1} X^T y$$
 * 너무 많은 featuer
   * feature에 비하여 데이터의 수가 적을 수 있다.
   * feature를 줄이거나 regularization을 한다.
-
-

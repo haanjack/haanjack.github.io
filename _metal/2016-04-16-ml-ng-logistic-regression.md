@@ -4,6 +4,7 @@ title:  "Logical Regression"
 date:   2016-04-15 0:30:00
 categories: Machine Learning
 description: Logistic Regression
+published: false
 ---
 
 # Logistic Regression
@@ -30,15 +31,15 @@ logistic Regression은 True/False로 특정데이터를 구분짓는 선형분�
 
 $$ J(\theta) = \frac {1}{m} \sum _{i = 1} ^m Cost(h _\theta(x^{(i)}), y^{(i)})$$
 
-여기서, 
+여기서,
 
-$$ Cost(h _\theta(x^{(i)}), y^{(i)}) = \begin{cases} 
+$$ Cost(h _\theta(x^{(i)}), y^{(i)}) = \begin{cases}
 -log(h _\theta(x)) & y = 1 \\
 -log(1 - h _\theta(x)) & y = 0
 \end{cases} $$
 
 이므로, Cost function은 다음과 같이 구성된다.
-  
+
 $$ J(\theta) = \frac {1}{m} [ \sum _{i = 1} ^m -log(h _\theta(x^{(i)}) + (1-y^{(i)}) log (1 - h _\theta (x ^{(i)})) $$
 
 ## Gradient Descent

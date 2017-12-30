@@ -4,6 +4,7 @@ title:  "Machine Learning Introduction"
 date:   2016-03-30 1:00:00
 categories: Machine Learning
 description: Machine Learning 소개
+published: false
 tags:
 - Machine Learning
 - Coursera
@@ -47,4 +48,3 @@ Unsupervised Learning 문제는 다음과 같이 분류된다.
   연관관계가 있는 데이터끼리 묶어내는 문제. 정확한 분류를 알지 못하므로 예측한 결과에 대한 피드백이 없다.
 * Associative
   새로운 데이터에 대하여 상관관계가 큰 경우을 추출해서 새로운 데이터에 대한 분류를 하는 문제
-

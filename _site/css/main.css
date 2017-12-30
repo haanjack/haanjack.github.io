@@ -18,7 +18,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: Nunito, sans-serif;
   font-size: 16px;
   line-height: 1.5em;
   font-weight: 100;
@@ -32,7 +32,7 @@ body {
 p, blockquote, pre,
 ul, ol, dl, figure,
 .highlight {
-  margin-bottom: 20px; }
+  margin-bottom: 0.75em; }
 
 .alignright {
   float: right; }
@@ -58,7 +58,7 @@ figcaption {
  * Lists
  */
 ul, ol {
-  margin-left: 50px; }
+  margin-left: 10px; }
 
 li > ul,
 li > ol {
@@ -78,15 +78,15 @@ a {
   text-decoration: none;
   /*
   &:visited {
-      color: darken($brand-color, 15%); 
+      color: darken($brand-color, 15%);
   }
   */ }
   a:hover {
-    color: #B7D12A;
+    color: #F29105;
     text-decoration: none; }
 
 article a {
-  color: #B7D12A;
+  color: #F29105;
   font-weight: 100; }
   article a:hover {
     text-decoration: none; }
@@ -97,7 +97,7 @@ article a {
 blockquote {
   color: #666;
   border-left: 10px solid #ddd;
-  padding-left: 25px;
+  padding-left: 5px;
   font-size: 18px;
   font-style: italic; }
   blockquote > :last-child {
@@ -127,16 +127,16 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(800px - (50px * 2));
-  max-width: calc(800px - (50px * 2));
+  max-width: -webkit-calc(800px - (10px));
+  max-width: calc(800px - (10px));
   margin-right: auto;
   margin-left: auto;
-  padding-right: 50px;
-  padding-left: 50px; }
+  padding-right: 10px;
+  padding-left: 10px; }
   @media screen and (max-width: 800px) {
     .wrapper {
-      max-width: -webkit-calc(800px - (50px));
-      max-width: calc(800px - (50px));
+      max-width: -webkit-calc(800px - (10px));
+      max-width: calc(800px - (10px));
       padding-right: 15px;
       padding-left: 15px; } }
 
@@ -179,10 +179,10 @@ pre {
     height: 32px; } }
 .icons-home a:hover {
   background: #fff;
-  border: 0.125rem solid #B7D12A; }
+  border: 0.125rem solid #F29105; }
 
 .icons-home a:hover .icon {
-  fill: #B7D12A; }
+  fill: #F29105; }
 
 .img-rounded {
   border-radius: 50%; }
@@ -279,12 +279,21 @@ a.anckor {
 .site-title {
   font-size: 20px;
   line-height: 56px;
+  font-weight: 600;
   letter-spacing: -1px;
   margin-bottom: 0;
   display: inline-block; }
   .site-title:hover {
     text-decoration: none;
-    color: #B7D12A; }
+    color: #F29105; }
+
+.site-description {
+  font-size: 20px;
+  line-height: 56px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  display: inline-block; }
 
 .site-nav {
   float: right;
@@ -310,17 +319,15 @@ a.anckor {
   left: 0px;
   top: 0px;
   position: relative;
-  font-size: 20px;
   display: block;
   opacity: 0.75;
   width: 100%;
   text-align: center;
-  padding-top: 25px;
-  line-height: 3em;
+  line-height: 1.5em;
   z-index: 25; }
   .header-bar h1 {
-    color: #B7D12A;
-    font-size: 75px; }
+    color: #F29105;
+    font-size: 60px; }
   .header-bar h2 {
     font-size: 25px; }
 
@@ -343,7 +350,7 @@ a.anckor {
  * Pagination   **********************************************************
  */
 .pagination {
-  max-width: -webkit-calc(800px - (50px * 2));
+  max-width: -webkit-calc(800px - (10px * 2));
   text-align: center;
   width: 100%;
   position: fixed;
@@ -352,7 +359,7 @@ a.anckor {
 .paginationicon {
   font-size: 50px; }
   .paginationicon a {
-    color: #B7D12A; }
+    color: #F29105; }
 
 /**
  * Page content   **********************************************************
@@ -368,7 +375,7 @@ a.anckor {
   margin: 0px 0;
   list-style: none; }
   .post-list > li {
-    margin-bottom: 40px; }
+    margin-bottom: 1.5em; }
 
 .contacticon {
   font-size: 60px;
@@ -382,59 +389,70 @@ a.anckor {
  * Posts  **********************************************************
  */
 .post-header {
-  margin-bottom: 40px;
+  margin-bottom: 1.5em;
   left: 0px;
   top: 0px;
   position: relative;
-  font-size: 20px;
   display: block;
   opacity: 0.75;
   width: 100%;
   text-align: center;
-  padding-top: 25px;
-  line-height: 3em;
+  padding-top: 1.5em;
+  line-height: 1.5em;
   z-index: 25; }
   .post-header h1 {
-    color: #B7D12A;
-    font-size: 60px;
+    font-size: 36px;
     word-break: normal; }
   .post-header h2 {
     font-size: 25px; }
 
 .post-title {
-  font-size: 42px;
-  letter-spacing: -1px;
-  line-height: 1; }
+  line-height: 1;
+  margin-bottom: 0;
+  font-weight: 400;
+  color: #666;
+  transition: color 1s ease; }
+  .post-title p {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0 0 0 0;
+    color: #F29105; }
   @media screen and (max-width: 800px) {
     .post-title {
-      font-size: 36px; } }
+      font-size: 28px; } }
+  .post-title:hover {
+    text-decoration: none;
+    color: #F29105; }
 
-.post-content h1 {
-  margin: 0.5rem auto 1rem;
-  font-weight: 300;
-  font-size: 32px; }
-  @media screen and (max-width: 800px) {
-    .post-content h1 {
-      font-size: 25px; } }
-.post-content h2 {
-  margin: 0.5rem auto;
-  font-size: 25px; }
-  @media screen and (max-width: 800px) {
-    .post-content h2 {
-      font-size: 18px; } }
-.post-content h3 {
-  margin: 0.5rem auto;
-  font-size: 18px; }
-  @media screen and (max-width: 800px) {
-    .post-content h3 {
-      font-size: 14px; } }
-.post-content h4 {
-  margin: 0.5rem auto;
-  font-size: 14px;
-  font-weight: 300; }
-  @media screen and (max-width: 800px) {
-    .post-content h4 {
-      font-size: 12px; } }
+.post-content {
+  margin: auto;
+  width: 800px; }
+  .post-content h1 {
+    margin: 0.5rem auto 1rem;
+    font-weight: 600;
+    font-size: 28px; }
+    @media screen and (max-width: 800px) {
+      .post-content h1 {
+        font-size: 22px; } }
+  .post-content h2 {
+    margin: 0.5rem auto;
+    font-size: 25px; }
+    @media screen and (max-width: 800px) {
+      .post-content h2 {
+        font-size: 18px; } }
+  .post-content h3 {
+    margin: 0.5rem auto;
+    font-size: 18px; }
+    @media screen and (max-width: 800px) {
+      .post-content h3 {
+        font-size: 14px; } }
+  .post-content h4 {
+    margin: 0.5rem auto;
+    font-size: 14px;
+    font-weight: 300; }
+    @media screen and (max-width: 800px) {
+      .post-content h4 {
+        font-size: 12px; } }
 
 .post-meta {
   font-size: 14px;
@@ -454,7 +472,7 @@ a.anckor {
     .post-title {
       font-size: 16px; } }
 
-/** 
+/**
  * Portfolio grid **********************************************************
 */
 .clearfix:before,
@@ -506,11 +524,51 @@ a.anckor {
 .thumbnail a:hover span {
   display: block; }
 
-/** 
+/**
+ * Tag layout
+*/
+.tag-cloud {
+  list-style: none;
+  padding: 0;
+  text-align: justify;
+  font-size: 16px; }
+  .tag-cloud li {
+    display: inline-block;
+    margin: 0 12px 12px 0; }
+
+#archives {
+  padding: 5px; }
+
+.archive-group {
+  margin: 5px;
+  border-top: 1px solid #ddd; }
+
+.archive-item {
+  margin-left: 5px; }
+
+.post-tags {
+  float: left;
+  vertical-align: middle; }
+
+.tag-img {
+  width: 1.0rem;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0 0 0 0; }
+
+.tag-item {
+  color: #666; }
+  .tag-item:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #2aa016;
+    border-radius: 4px; }
+
+/**
  * Portfolio pages **********************************************************
 */
 .blankbox {
-  background: #B7D12A; }
+  background: #F29105; }
 
 .img_row {
   height: 275px;

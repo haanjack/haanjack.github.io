@@ -4,6 +4,7 @@ title:  "Theano를 통한 Logical Regression"
 date:   2016-04-15 0:40:00
 categories: Deep Learning
 description: Theano를 통한 Logistic Regression 구현
+published: false
 tags:
 - DeepLearning
 - Classification
@@ -57,18 +58,18 @@ import theano.tensor as T
   * 모델 적용시, 수렴된 파라미터를 기반으로 새로운 데이터의 속성을 분류한다.
 
 ### Deep Learning 절차
-                 
+
 1. Softmax regression
   Deep Learning에서는 softmax 함수를 이용하여 logistic regression을 수행한다. Softmax 함수는 여러 종류로 분류하는 것을 보다 일반화한 것이다. 출력이 pdf (probability density function)이므로, 총합은 1이며, 각 요소별 분류간 확률이 나온다.
-  
+
   [Stanford Deep Learning Tutorial](http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/)을 보면 좀 더 자세한 수식이 나오지만, 따질려다보니 지금 다룰 만한 내용이 아닌 것 같아서 넘어갈 것이다.
 
   여하튼, Deep Learning은 다음과 같이 구성한다.
-  
+
   $$ P(Y = i|x, W, b) = softmax_i(Wx+b) = \frac {e^{W_ix+b_i}}{\sum_je^{W_jx+b_j}}$$
 
   $$ y_{pred} = argmax_iP(Y=i|x,W,b) $$
-  
+
 
 2. Cost function
   Deep Learning도 Gradient Descent를 사용하며, Gradient 대상이 되는 Cost Funciton이 있으며, Tutorial을 보면 Machine Learning에서 사용하는 식과 동일하다.
@@ -125,7 +126,7 @@ class LogisticRegression(object):
 문서에서 보면, 'multi-class logistic regression에서 negative log-likelihood를 주로 사용한다'고 되어 있다. 이유는 안 써있다...;;
 
 나는 **negative log-likelihood**도 모르니까 적당히 넘어가지 말고 찾아보기로 했다.
-Googling을 해서 찾아본 [문서](https://quantivity.wordpress.com/2011/05/23/why-minimize-negative-log-likelihood/)를 보면, 
+Googling을 해서 찾아본 [문서](https://quantivity.wordpress.com/2011/05/23/why-minimize-negative-log-likelihood/)를 보면,
 likelihood는 조건부 확률을 의미하며 다음식과 같이 구성된다.
 
 $$\mathcal{L}(\theta\,|\,x_1,\ldots,x_n) = f(x_1,x_2,\ldots,x_n|\theta) = \prod\limits_{i=1}^n f(x_i|\theta)$$
@@ -149,16 +150,16 @@ $$ \hat{\theta}_{MLE} = \underset{\theta}{\arg\max} \sum\limits_{i=1}^n \log f(x
 $\underset{x}{\arg\max} (x)  = \underset{x}{\arg\min} (-x)$
 
 따라서 deep learning tutorial에서 언급한 negative log-likelihood는 softmax의 결과인 확률 분포상에서 오차를 cost로 삼기 위해서 사용하는 연산인것 같다.
-        
+
 {% highlight python %}
 ... Continue of LogisticRegression ...
 
   def negative_log_likelihood(self, y):
     return -T.mean(T.log(self.p_y_given_x)[T.arange(y.shape[0]), y])
-    
+
 {% endhighlight %}
 
-negative_log_likelihood 함수는 theano 답게 symbolic expression으로 되어 있다. 
+negative_log_likelihood 함수는 theano 답게 symbolic expression으로 되어 있다.
 
 음.. 수학적인 부분에 대해서는 좀 더 알아보고 내용을 가다듬어야 할 것 같다.
 
@@ -204,7 +205,7 @@ MNIST의 이미지 크기가 $28 \times 28$이고, MNIST에서 사용되는 숫�
 [MNIST](http://yann.lecun.com/exdb/mnist/)를 위해서 제공되는 파일을 train/valid/test 각각 목적에 맞게 불러들인다.
 MNIST의 데이터는 $28 \times 28$ 크기의 이미지이며, 손으로 쓰여진 그림이다. 각각의 이미지는 손으로 쓰여진 숫자(x)와 어떤 숫자인지(y) 알려준다.
 
-좋은 점은 이미지의 크기나 이미지 구획에 대해서 고민할 필요없이 잘 정리돈 추출된 데이터 집합이므로, 데이터 엔지니어에 의해서 데이터가 정리된다든지 하는 작업을 건너뛰고 바로 Classification을 해볼 수 있다. 
+좋은 점은 이미지의 크기나 이미지 구획에 대해서 고민할 필요없이 잘 정리돈 추출된 데이터 집합이므로, 데이터 엔지니어에 의해서 데이터가 정리된다든지 하는 작업을 건너뛰고 바로 Classification을 해볼 수 있다.
 
 {% highlight python %}
 def load_data(dataset):
@@ -538,7 +539,3 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
          os.path.split(__file__)[1] +
          ' ran for %.1fs' % ((end_time - start_time))), file=sys.stderr)
 {% endhighlight %}
-
-
-
-

@@ -3,6 +3,7 @@ layout: post
 title:  "Theano 시작하기"
 date:   2016-02-29 0:30:00
 categories: CUDA Python Theano
+published: false
 ---
 
 # Theano 시작하기

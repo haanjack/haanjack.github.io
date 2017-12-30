@@ -4,6 +4,7 @@ title:  "Theano를 통한 Multilayer Perceptrion"
 date:   2016-04-25 0:10:00
 categories: Deep Learning
 description: Theano를 통한 Neural Networks
+published: false
 tags:
 - DeepLearning
 - Neural Networks
@@ -47,7 +48,7 @@ class HiddenLayer(object):
   def __init__(self, rng, input, n_in, n_out, W=None, b=None,
                activation=T.tanh):
     self.input = input
-    
+
     # Weight matrix 초기화
     if W is None:
       W_values = numpy.asarray(
@@ -117,7 +118,7 @@ class MLP(object):
         n_in=n_hidden,
         n_out=n_out
     )
-    
+
     # Regularization Opetions
     # L1 norm
     # one regularization option is to enforce L1 norm to be small
@@ -126,7 +127,7 @@ class MLP(object):
         + abs(self.logRegressionLayer.W).sum()
     )
 
-    # square of L2 norm ; 
+    # square of L2 norm ;
     # one regularization option is to enforce square of L2 norm to be small
     self.L2_sqr = (
         (self.hiddenLayer.W ** 2).sum()

@@ -1,17 +1,19 @@
 <header class="site-header">
 
   <div class="wrapper">
-    <div class="site-title" >*{{ site.title }}</div>
-      
+    <div class="site-title" ><a href="/about/">{{ site.title }}</a></div>
+    <div class="site-description">{{ site.description }}</div>
+
     <nav class="site-nav">
-        
+
       <div class="trigger">
         <!-- {{ site.title }} instead of blog -->
-        <a class="page-link" href="{{ site.baseurl }}/">blog</a>
+        <a class="page-link" href="{{ site.baseurl }}/">Home</a>
 
         {% for page in site.pages %}
+
           {% if page.title %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          |<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>&nbsp;
           {% endif %}
         {% endfor %}
 

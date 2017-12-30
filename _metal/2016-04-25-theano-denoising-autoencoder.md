@@ -4,6 +4,7 @@ title:  "Denoising Autoencoder (dA) with Theano"
 date:   2016-04-25 0:20:00
 categories: Deep Learning
 description: Theano를 기반으로 구현한 Unsupervised Learning I
+published: false
 tags:
 - DeepLearning
 - Unsupervised learning
@@ -29,7 +30,7 @@ Autoencoder는 unsupervised learning의 한종류로 입력 데이터의 represe
 
 Bengio 교수가 쓴 [Learning Deep Architecture for AI](http://www.iro.umontreal.ca/~bengioy/papers/ftml_book.pdf)의 4.6절을 보면, *Autoencoder*에 대한 설명이 나와있는데, 필요한 내용은 Tutorial에 충분히 옮겨져 있다.
 
-Autoencoder는 다음과 같은 구성을 갖고 있다. 
+Autoencoder는 다음과 같은 구성을 갖고 있다.
 
 <img class="col two center" src="/images/201604/Autoencoder_structure.png"/>
 
@@ -63,7 +64,7 @@ class dA(object):
   ):
     self.n_visible = n_visible
     self.n_hidden = n_hidden
-    
+
     # Random Number Generation
     # create a Theano random generator that gives symbolic random values
     if not theano_rng:
@@ -86,7 +87,7 @@ class dA(object):
         )
         W = theano.shared(value=initial_W, name='W', borrow=True)
 
-    
+
     if not bvis:
         bvis = theano.shared(
             value=numpy.zeros(
@@ -179,7 +180,7 @@ $$ L(\mathrm{xz}) = - \sum _{k = 1} ^d [\mathrm{x}_k \mathrm{log} \mathrm{z}_k +
 
 ## Training
 
-매 입력마다 학습을 시키면서 입력값과 출력값을 비교하여 back-propagation을 통해 학습을 시키면 된다. 
+매 입력마다 학습을 시키면서 입력값과 출력값을 비교하여 back-propagation을 통해 학습을 시키면 된다.
 
 Theano 예제에서는 stochastic gradient descdent 방식으로 back-propagation을 수행한다.
 

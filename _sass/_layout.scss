@@ -17,13 +17,22 @@ z-index: 50;
 .site-title {
 font-size: 20px;
 line-height: $nav-height;
+font-weight: 600;
 letter-spacing: -1px;
 margin-bottom: 0;
 display: inline-block;
 &:hover {
 text-decoration: none;
 color: $theme-color;
-    }
+  }
+}
+.site-description {
+  font-size: 20px;
+  line-height: $nav-height;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  display: inline-block;
 }
 .site-nav {
 float: right;
@@ -55,20 +64,18 @@ display: line;
     left: 0px;
     top: 0px;
     position: relative;
-    font-size: 20px;
     display: block;
     opacity: 0.75;
     width: 100%;
     text-align: center;
-    padding-top: 25px;
-    line-height: 3em;
+    line-height: 1.5em;
     z-index: 25;
     h1{
         color: $theme-color;
-        font-size:75px;
+        font-size: 60px;
     }
     h2{
-        font-size:25px;
+        font-size: 25px;
     }
 }
 
@@ -135,17 +142,15 @@ text-align: center;
     left: 0px;
     top: 0px;
     position: relative;
-    font-size: 20px;
     display: block;
     opacity: 0.75;
     width: 100%;
     text-align: center;
-    padding-top: 25px;
-    line-height: 3em;
+    padding-top: 1.5em;
+    line-height: 1.5em;
     z-index: 25;
     h1{
-        color: $theme-color;
-        font-size:60px;
+        font-size:36px;
         word-break:normal;
     }
     h2{
@@ -153,20 +158,35 @@ text-align: center;
     }
 }
 .post-title {
-font-size: 42px;
-letter-spacing: -1px;
+// letter-spacing: -1px;
 line-height: 1;
+margin-bottom: 0;
+font-weight: 400;
+color: $text-color;
+transition: color 1s ease;
+p {
+  font-size: 32px;
+  font-weight: 500;
+  margin: 0 0 0 0;
+  color: $theme-color;
+}
 @include media-query($on-laptop) {
-font-size: 36px;
-    }
+  font-size: 28px;
+}
+&:hover {
+  text-decoration: none;
+  color: $theme-color;
+}
 }
 .post-content {
+margin: auto;
+width: 800px;
 h1 {
 margin: 0.5rem auto 1rem;
-font-weight: 300;
-font-size: 32px;
+font-weight: 600;
+font-size: 28px;
 @include media-query($on-laptop) {
-font-size: 25px;
+font-size: 22px;
         }
     }
 h2 {
@@ -195,7 +215,7 @@ font-size: 12px;
 .post-meta {
 font-size: $small-font-size;
 color: $grey-color;
-margin-bottom: 0px; 
+margin-bottom: 0px;
 }
 .post-link {
 display: block;
@@ -213,7 +233,7 @@ font-size: 16px;
 }
 
 
-/** 
+/**
  * Portfolio grid **********************************************************
 */
 // Nicolas Gallagher's micro clearfix hack
@@ -267,7 +287,52 @@ text-align: center;
 .thumbnail a:hover span {
 display: block;
 }
-/** 
+
+/**
+ * Tag layout
+*/
+// for tag cloud and archives
+.tag-cloud {
+  list-style: none;
+  padding: 0;
+  text-align: justify;
+  font-size: 16px;
+  li {
+    display: inline-block;
+    margin: 0 12px 12px 0;
+  }
+}
+#archives {
+  padding: 5px;
+}
+.archive-group {
+  margin: 5px;
+  border-top: 1px solid #ddd;
+}
+.archive-item {
+  margin-left: 5px;
+}
+.post-tags {
+  float: left;
+  vertical-align: middle;
+}
+.tag-img {
+  width: 1.0rem;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0 0 0 0;
+}
+.tag-item {
+  color: $text-color;
+  &:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #2aa016;
+    border-radius: 4px;
+  }
+}
+
+/**
  * Portfolio pages **********************************************************
 */
 .blankbox{

@@ -1,11 +1,11 @@
 # Site settings
-title: hanjack
-email: you@example.com
+title: EXPERIENTIA DOCET
 description: > # this means to ignore newlines until "baseurl:"
-  A simple, whitespace, helvetica based portfolio theme.
+  hanjack
 baseurl:  # the subpath of your site, e.g. /blog/
-url:  # the base hostname & protocol for your site
+url: # the base hostname & protocol for your site
 email: haanjack@gmail.com
+facebook_username: haanjack
 twitter_username: haanjack
 github_username:  haanjack
 gplus_username:  haanjack
@@ -14,10 +14,10 @@ disqus_username: haanjack
 # Build settings
 markdown: kramdown
 
-highlighter: rouge
+highlighter: pygments
 
 # Pagination
-gems: ['jekyll-paginate', 'jekyll-mermaid']
+plugins: ['jekyll-paginate', 'jekyll-mermaid']
 paginate: 15
 paginate_path: "/blog/page:num/"
 mermaid:
@@ -25,15 +25,15 @@ mermaid:
 
 
 collections:
-  cuda:
-    output: true
-    permalink: /cuda/:path/
-  metal:
-    output: true
-    permalink: /metal/:path/
-  portfolio:
-    output: true
-    permalink: /portfolio/:path/
-#poetry:
-#    output: true
-#    permalink: /poetry/:path/
+   gpu:
+     output: true
+     permalink: /gpu/:path/
+  # metal:
+  #  output: true
+  #  permalink: /metal/:path/
+  # portfolio:
+  #   output: false
+  #   permalink: /portfolio/:path/
+  #poetry:
+  #    output: true
+  #    permalink: /poetry/:path/
