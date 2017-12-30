@@ -2,11 +2,11 @@
 layout: post
 title:  "GPGPU와 CUDA"
 date:   2016-02-26 2:18:00
-categories: CUDA Programming
 description: GPGPU를 위한 CUDA에 대한 배경 지식. 그리고 GPU 구매 가이드
 publish: true
+categories: CUDA
 tags:
-- CUDA
+- CUDA Architecture
 - GPGPU
 ---
 

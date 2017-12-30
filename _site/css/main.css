@@ -442,13 +442,13 @@ a.anckor {
         font-size: 18px; } }
   .post-content h3 {
     margin: 0.5rem auto;
-    font-size: 18px; }
+    font-size: 20px; }
     @media screen and (max-width: 800px) {
       .post-content h3 {
         font-size: 14px; } }
   .post-content h4 {
     margin: 0.5rem auto;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 300; }
     @media screen and (max-width: 800px) {
       .post-content h4 {
@@ -525,7 +525,7 @@ a.anckor {
   display: block; }
 
 /**
- * Tag layout
+ * Archive/Category/Tag layout
 */
 .tag-cloud {
   list-style: none;
@@ -536,15 +536,23 @@ a.anckor {
     display: inline-block;
     margin: 0 12px 12px 0; }
 
-#archives {
+.tag-anchor {
+  display: block;
+  position: relative;
+  top: -100px; }
+
+#archive {
   padding: 5px; }
+  #archive h2 {
+    color: #F29105; }
 
-.archive-group {
-  margin: 5px;
-  border-top: 1px solid #ddd; }
-
-.archive-item {
-  margin-left: 5px; }
+.tag-item {
+  color: #666; }
+  .tag-item:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #2aa016;
+    border-radius: 3px; }
 
 .post-tags {
   float: left;
@@ -556,13 +564,15 @@ a.anckor {
   margin: 0 10px 0 0;
   padding: 0 0 0 0; }
 
-.tag-item {
-  color: #666; }
-  .tag-item:hover {
-    text-decoration: none;
-    color: #FFFFFF;
-    background-color: #2aa016;
-    border-radius: 4px; }
+.archive-group {
+  margin-top: 20px; }
+
+.archive-item {
+  margin-left: 10px;
+  margin-top: 5px; }
+  .archive-item .date {
+    margin-right: 10px;
+    display: inline; }
 
 /**
  * Portfolio pages **********************************************************
@@ -609,7 +619,7 @@ a.anckor {
   color: #aaa;
   text-align: center;
   vertical-align: middle;
-  font-size: 12px; }
+  font-size: 16px; }
 
 /**
  * Syntax highlighting styles

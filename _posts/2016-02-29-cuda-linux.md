@@ -3,7 +3,10 @@ layout: post
 title:  "Ubuntu에 CUDA 설치"
 date:   2016-02-29 0:00:00
 publish: true
-categories: CUDA Ubuntu
+categories: CUDA
+tags:
+- CUDA 7.5
+- CUDA Driver
 ---
 
 우분투와 nVidia 그래픽 카드가 설치되어 있는 환경에서 진행한다.

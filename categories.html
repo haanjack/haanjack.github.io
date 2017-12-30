@@ -1,0 +1,30 @@
+---
+layout: default
+title: Category
+---
+
+<div class="header-bar">
+  <h1>*Categories</h1>
+  <br/>
+  <hr>
+  <br/>
+</div>
+
+<div id="archive">
+  {% for category in site.categories %}
+  <div class="archive-group">
+    <h2>{{ category | first }}</h2>
+    {% for posts in category %}
+      {% for post in posts %}
+        {% if post.first[0] == null %}
+        {% else %}
+          <div class="archive-item">
+            <div class="date">{{ post.date | date: '%b %d'}}</div>
+            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>

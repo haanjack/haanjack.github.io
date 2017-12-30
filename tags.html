@@ -1,0 +1,38 @@
+---
+layout: default
+title: Tags
+---
+
+<div class="header-bar">
+  <h1>*Tags</h1>
+  <br/>
+  <hr>
+  <br/>
+</div>
+
+<ul class="tag-cloud">
+{% for tag in site.tags %}
+  <span style="font-size: {{ tag | last | size | times: 100 | divided_by: site.tags.size | plus: 80  }}%">
+    <a href="#{{ tag | first | slugize }}" class="tag-item">
+      {{ tag | first }}
+    </a> &nbsp;&nbsp;
+  </span>
+{% endfor %}
+</ul>
+
+<hr>
+
+<div id="archive">
+{% for tag in site.tags %}
+  <div class="archive-group">
+    {% capture tag_name %}{{ tag | first }}{% endcapture %}
+    <h2 id="#{{ tag_name | slugize }}">{{ tag_name }}</h2>
+    <a name="{{ tag_name | slugize }}"  class="tag-anchor"></a>
+    {% for post in site.tags[tag_name] %}
+    <div class="archive-item">
+      <a href="{{ root_url }}{{ post.url }}">{{post.title}}</a>
+    </div>
+    {% endfor %}
+  </div>
+{% endfor %}
+</div>

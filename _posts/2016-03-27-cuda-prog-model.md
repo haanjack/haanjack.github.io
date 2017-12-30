@@ -5,8 +5,9 @@ date:   2016-03-27 1:00:00
 categories: CUDA Programming
 description: CUDA 프로그래밍을 위한 기초 개념
 publish: true
+categories: CUDA
 tags:
-- CUDA
+- CUDA Programming
 ---
 
 CUDA 프로그래밍을 하면서 제가 겪었던, 또는 주위에 CUDA 프로그래밍을 주변에 소개하면서 겪었던 가장 큰 어려움은 CUDA 프로그래밍의 개념을 이해하거나 이해시키는 일이었습니다.

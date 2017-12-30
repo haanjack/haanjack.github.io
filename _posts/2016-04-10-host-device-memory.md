@@ -4,9 +4,9 @@ title:  "CUDA GPU 메모리"
 date:   2016-04-10 4:18:00
 description: CUDA GPU 메모리의 종류 및 활용법
 publish: true
+categories: CUDA
 tags:
- - CUDA Memory
- - CUDA
+ - CUDA Programming
 ---
 
 GPU에서 동작하는 메모리의 종류 및 활용 방법에 대해서 알아보도록 하겠습니다. 이 포스트는 다음과 같은 것들을 다룰 예정입니다.

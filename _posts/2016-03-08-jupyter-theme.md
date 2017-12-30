@@ -2,7 +2,9 @@
 layout: post
 title:  "Jupyter 노트북 테마적용"
 date:   2016-03-08 0:20:00
-categories: Jupyter theme
+categories: Tool
+tags:
+- Jupyter
 ---
 
 [Jupyter](http://jupyter.org)의 테마는 원래 하얀 색이다.
@@ -16,7 +18,7 @@ categories: Jupyter theme
 * [42 Jupyter theme](https://github.com/nsonnad/base16-ipython-notebook)
 * [3 Jupyter-themes](https://github.com/dunovank/jupyter-themes)
 
-두 가지를 모두 해보았는데, 최종적으로는 dunovank의 theme가 설치도 쉽고 색상 등에 있어서 더 가독성이 좋다는 생각이 들었다. 
+두 가지를 모두 해보았는데, 최종적으로는 dunovank의 theme가 설치도 쉽고 색상 등에 있어서 더 가독성이 좋다는 생각이 들었다.
 
 ## 설치
 

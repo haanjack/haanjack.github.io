@@ -198,14 +198,14 @@ font-size: 18px;
     }
 h3 {
 margin: 0.5rem auto;
-font-size: 18px;
+font-size: 20px;
 @include media-query($on-laptop) {
 font-size: 14px;
         }
     }
 h4 {
 margin: 0.5rem auto;
-font-size: 14px;
+font-size: 16px;
 font-weight: 300;
 @include media-query($on-laptop) {
 font-size: 12px;
@@ -289,9 +289,9 @@ display: block;
 }
 
 /**
- * Tag layout
+ * Archive/Category/Tag layout
 */
-// for tag cloud and archives
+// for tag cloud
 .tag-cloud {
   list-style: none;
   padding: 0;
@@ -302,15 +302,25 @@ display: block;
     margin: 0 12px 12px 0;
   }
 }
-#archives {
+.tag-anchor {
+  display: block;
+  position: relative;
+  top: -100px;
+}
+#archive {
   padding: 5px;
+  h2 {
+    color: $theme-color;
+  }
 }
-.archive-group {
-  margin: 5px;
-  border-top: 1px solid #ddd;
-}
-.archive-item {
-  margin-left: 5px;
+.tag-item {
+  color: $text-color;
+  &:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #2aa016;
+    border-radius: 3px;
+  }
 }
 .post-tags {
   float: left;
@@ -322,13 +332,15 @@ display: block;
   margin: 0 10px 0 0;
   padding: 0 0 0 0;
 }
-.tag-item {
-  color: $text-color;
-  &:hover {
-    text-decoration: none;
-    color: #FFFFFF;
-    background-color: #2aa016;
-    border-radius: 4px;
+.archive-group {
+  margin-top: 20px;
+}
+.archive-item {
+  margin-left: 10px;
+  margin-top: 5px;
+  .date {
+    margin-right: 10px;
+    display: inline;
   }
 }
 

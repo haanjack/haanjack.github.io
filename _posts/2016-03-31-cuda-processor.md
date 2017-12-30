@@ -5,20 +5,11 @@ date:   2016-03-31 1:00:00
 categories: CUDA Programming
 description: CUDA 프로그래밍을 위한 Architecture 이해 및 Thread Index 설계
 publish: true
+categories: CUDA
 tags:
-- CUDA
+- CUDA Programming
+- CUDA Architecture
 ---
-
-<head>
- <style type="text/css">
- <!--
-  body {font-size:9pt;}
- //-->
- table_drow {
-  border: grid 1px #000;
- }
- </style>
-</head>
 
 지난 CUDA 프로그래밍 포스트에서는 CUDA 프로그래맹 모델에 대하여 이야기 해보았습니다.
 
@@ -47,14 +38,12 @@ CUDA Processor의 구조를 살펴보도록 하겠습니다. 그리고 어떻게
 
 조금 더 상세히 보도록 하겠습니다. 아래 그림은 CUDA Multi-processor의 구조도입니다.
 
-<div class="img_row">
-<img class="col one center" src="/images/201603/Kepler.png"/>
+<img class="col two center" src="/images/201603/Kepler.png"/>
 <div class="col three caption">
-  Kepler Multi-prcessor Architecture 그림
-</div>
+Kepler Multi-prcessor Architecture 그림 (<a href="https://www.youtube.com/watch?v=aAeK19iWda8">네모의 꿈?</a>)
 </div>
 
-[네모의 꿈](https://www.youtube.com/watch?v=aAeK19iWda8)도 아닌데 네모가 참 많습니다.
+
 CUDA Programming에서 최적화의 상당부분은 이 CUDA Multi-Processor에 대하여 얼마나 최적화를 잘하느냐에서 결정됩니다. 따라서 언젠가는 각 요소에 대해서 알고 계셔야 하는데요, 여기서는 간략히 설명을 드리는 정도에서 다음으로 넘어가도록 하겠습니다.
 
 * Processing Units
