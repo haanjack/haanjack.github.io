@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- <title>CUDA 프로세서에 대한 이해</title> -->
+    <title>EXPERIENTIA DOCET| CUDA 프로세서에 대한 이해</title>
+    <meta name="description" content="hanjack
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/cuda/2016/03/31/cuda-processor.html">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <line rel="stylesheet" href="/css/solarized_light.css"
+
+    <!-- mathjax config similar to math.stackexchange -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      messageStyle: "none",
+      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+    });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111671880-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111671880-1');
+</script>
+
+
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1">
+  <defs>
+    <symbol id="icon-menu" viewBox="0 0 1024 1024">
+      <path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 951 1024">
+      <path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/>
+    </symbol>
+    <symbol id="icon-email" viewBox="0 0 1024 1024">
+      <path class="path1" d="M950.857 859.429v-438.857q-18.286 20.571-39.429 37.714-153.143 117.714-243.429 193.143-29.143 24.571-47.429 38.286t-49.429 27.714-58.571 14h-1.143q-27.429 0-58.571-14t-49.429-27.714-47.429-38.286q-90.286-75.429-243.429-193.143-21.143-17.143-39.429-37.714v438.857q0 7.429 5.429 12.857t12.857 5.429h841.143q7.429 0 12.857-5.429t5.429-12.857zM950.857 258.857v-14t-0.286-7.429-1.714-7.143-3.143-5.143-5.143-4.286-8-1.429h-841.143q-7.429 0-12.857 5.429t-5.429 12.857q0 96 84 162.286 110.286 86.857 229.143 181.143 3.429 2.857 20 16.857t26.286 21.429 25.429 18 28.857 15.714 24.571 5.143h1.143q11.429 0 24.571-5.143t28.857-15.714 25.429-18 26.286-21.429 20-16.857q118.857-94.286 229.143-181.143 30.857-24.571 57.429-66t26.571-75.143zM1024 237.714v621.714q0 37.714-26.857 64.571t-64.571 26.857h-841.143q-37.714 0-64.571-26.857t-26.857-64.571v-621.714q0-37.714 26.857-64.571t64.571-26.857h841.143q37.714 0 64.571 26.857t26.857 64.571z"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 805 1024">
+      <path class="path1" d="M741.714 755.429q0 22.857-16 38.857l-77.714 77.714q-16 16-38.857 16t-38.857-16l-168-168-168 168q-16 16-38.857 16t-38.857-16l-77.714-77.714q-16-16-16-38.857t16-38.857l168-168-168-168q-16-16-16-38.857t16-38.857l77.714-77.714q16-16 38.857-16t38.857 16l168 168 168-168q16-16 38.857-16t38.857 16l77.714 77.714q16 16 16 38.857t-16 38.857l-168 168 168 168q16 16 16 38.857z"/>
+    </symbol>
+    <symbol id="icon-twitter" viewBox="0 0 951 1024">
+      <path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/>
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 585 1024">
+      <path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/>
+    </symbol>
+    <symbol id="icon-rss" viewBox="0 0 805 1024">
+      <path class="path1" d="M219.429 768q0 45.714-32 77.714t-77.714 32-77.714-32-32-77.714 32-77.714 77.714-32 77.714 32 32 77.714zM512 838.286q1.143 16-9.714 27.429-10.286 12-26.857 12h-77.143q-14.286 0-24.571-9.429t-11.429-23.714q-12.571-130.857-105.429-223.714t-223.714-105.429q-14.286-1.143-23.714-11.429t-9.429-24.571v-77.143q0-16.571 12-26.857 9.714-9.714 24.571-9.714h2.857q91.429 7.429 174.857 46t148 103.714q65.143 64.571 103.714 148t46 174.857zM804.571 839.429q1.143 15.429-10.286 26.857-10.286 11.429-26.286 11.429h-81.714q-14.857 0-25.429-10t-11.143-24.286q-6.857-122.857-57.714-233.429t-132.286-192-192-132.286-233.429-58.286q-14.286-0.571-24.286-11.143t-10-24.857v-81.714q0-16 11.429-26.286 10.286-10.286 25.143-10.286h1.714q149.714 7.429 286.571 68.571t243.143 168q106.857 106.286 168 243.143t68.571 286.571z"/>
+    </symbol>
+    <symbol id="icon-google-plus" viewBox="0 0 951 1024">
+      <path class="path1" d="M420 454.857q0 20.571 18.286 40.286t44.286 38.857 51.714 42 44 59.429 18.286 81.143q0 51.429-27.429 98.857-41.143 69.714-120.571 102.571t-170.286 32.857q-75.429 0-140.857-23.714t-98-78.571q-21.143-34.286-21.143-74.857 0-46.286 25.429-85.714t67.714-65.714q74.857-46.857 230.857-57.143-18.286-24-27.143-42.286t-8.857-41.714q0-20.571 12-48.571-26.286 2.286-38.857 2.286-84.571 0-142.571-55.143t-58-139.714q0-46.857 20.571-90.857t56.571-74.857q44-37.714 104.286-56t124.286-18.286h238.857l-78.857 50.286h-74.857q42.286 36 64 76t21.714 91.429q0 41.143-14 74t-33.714 53.143-39.714 37.143-34 35.143-14 37.714zM336.571 400q21.714 0 44.571-9.429t37.714-24.857q30.286-32.571 30.286-90.857 0-33.143-9.714-71.429t-27.714-74-48.286-59.143-66.857-23.429q-24 0-47.143 11.143t-37.429 30q-26.857 33.714-26.857 91.429 0 26.286 5.714 55.714t18 58.857 29.714 52.857 42.857 38.286 55.143 14.857zM337.714 898.857q33.143 0 63.714-7.429t56.571-22.286 41.714-41.714 15.714-62.286q0-14.286-4-28t-8.286-24-15.429-23.714-16.857-20-22-19.714-20.857-16.571-23.714-17.143-20.857-14.857q-9.143-1.143-27.429-1.143-30.286 0-60 4t-61.429 14.286-55.429 26.286-39.143 42.571-15.429 60.286q0 40 20 70.571t52.286 47.429 68 25.143 72.857 8.286zM800.571 398.286h121.714v61.714h-121.714v125.143h-60v-125.143h-121.143v-61.714h121.143v-124h60v124z"/>
+    </symbol>
+    <symbol id="icon-angle-down" viewBox="0 0 658 1024">
+      <path class="path1" d="M614.286 420.571q0 7.429-5.714 13.143l-266.286 266.286q-5.714 5.714-13.143 5.714t-13.143-5.714l-266.286-266.286q-5.714-5.714-5.714-13.143t5.714-13.143l28.571-28.571q5.714-5.714 13.143-5.714t13.143 5.714l224.571 224.571 224.571-224.571q5.714-5.714 13.143-5.714t13.143 5.714l28.571 28.571q5.714 5.714 5.714 13.143z"/>
+    </symbol>
+    <symbol id="icon-github-alt" viewBox="0 0 951 1024">
+      <path class="path1" d="M365.714 694.857q0 22.857-7.143 46.857t-24.571 43.429-41.429 19.429-41.429-19.429-24.571-43.429-7.143-46.857 7.143-46.857 24.571-43.429 41.429-19.429 41.429 19.429 24.571 43.429 7.143 46.857zM731.429 694.857q0 22.857-7.143 46.857t-24.571 43.429-41.429 19.429-41.429-19.429-24.571-43.429-7.143-46.857 7.143-46.857 24.571-43.429 41.429-19.429 41.429 19.429 24.571 43.429 7.143 46.857zM822.857 694.857q0-68.571-39.429-116.571t-106.857-48q-23.429 0-111.429 12-40.571 6.286-89.714 6.286t-89.714-6.286q-86.857-12-111.429-12-67.429 0-106.857 48t-39.429 116.571q0 50.286 18.286 87.714t46.286 58.857 69.714 34.286 80 16.857 85.143 4h96q46.857 0 85.143-4t80-16.857 69.714-34.286 46.286-58.857 18.286-87.714zM950.857 594.286q0 118.286-34.857 189.143-21.714 44-60.286 76t-80.571 49.143-97.143 27.143-98 12.571-95.429 2.571q-44.571 0-81.143-1.714t-84.286-7.143-87.143-17.143-78.286-29.429-69.143-46.286-49.143-65.714q-35.429-70.286-35.429-189.143 0-135.429 77.714-226.286-15.429-46.857-15.429-97.143 0-66.286 29.143-124.571 61.714 0 108.571 22.571t108 70.571q84-20 176.571-20 84.571 0 160 18.286 60-46.857 106.857-69.143t108-22.286q29.143 58.286 29.143 124.571 0 49.714-15.429 96 77.714 91.429 77.714 227.429z"/></symbol><symbol id="icon-linkedin" viewBox="0 0 1792 1792"><path class="path1" d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/>
+    </symbol>
+  </defs>
+</svg>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+    <div class="site-title" ><a href="/about/">EXPERIENTIA DOCET</a></div>
+    <div class="site-description">hanjack
+</div>
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!-- EXPERIENTIA DOCET instead of blog -->
+        <a class="page-link" href="/">Home</a>
+
+        
+
+          
+        
+
+          
+          |<a class="page-link" href="/archive.html">Archive</a>&nbsp;
+          
+        
+
+          
+          |<a class="page-link" href="/categories.html">Categories</a>&nbsp;
+          
+        
+
+          
+        
+
+          
+        
+
+          
+        
+
+          
+          |<a class="page-link" href="/tags.html">Tags</a>&nbsp;
+          
+        
+
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="post-content">
+        <div class="post">
+  <header class="post-header">
+    <div class="post-title"><p>CUDA 프로세서에 대한 이해</p></div>
+    <p class="post-meta">March 31, 2016</p>
+    <p class="post-meta"><div class="post-tags">
+  <i class="fa fa-tags"></i>
+  
+  
+  <a href="/tags/#CUDA Programming" class="tag-item">CUDA Programming</a>,
+  
+  <a href="/tags/#CUDA Architecture" class="tag-item">CUDA Architecture</a>
+  
+</div>
+</p>
+    <br/>
+    <hr/>
+  </header>
+
+  <article class="post-content">
+    <p>지난 CUDA 프로그래밍 포스트에서는 CUDA 프로그래맹 모델에 대하여 이야기 해보았습니다.</p>
+
+<p>이번에는 아래와 같은 주제로 보다 자세히 CUDA 프로그래밍에 대해 알아보도록 하겠습니다.</p>
+
+<ul>
+  <li><a href="#CUDA Processor Architecture">CUDA Processor 구조</a></li>
+  <li><a href="#CUDA Processor &amp; Thread">CUDA Thread Hierachy와 CUDA Processor간의 관계</a></li>
+  <li><a href="#CUDA Thread Index">CUDA Thread Index 구성</a></li>
+</ul>
+
+<p>맨 마지막 내용이 결론이므로, 컴퓨터 구조에 대한 흥미가 없으시거나 바쁘신 분들은 마지막 내용만 보고 복사해 가셔도 됩니다. 나중에 더 공부하고 싶을때 보셔도 됩니다.</p>
+
+<p><a id="CUDA Processor Architecture"></a></p>
+
+<h1 id="cuda-processor-구조">CUDA Processor 구조</h1>
+
+<p>CUDA Processor의 구조를 살펴보도록 하겠습니다. 그리고 어떻게 CUDA에서 병렬처리가 이뤄지는지 살펴보도록 하겠습니다.</p>
+
+<p><img class="col three" src="/images/201603/blockdiagram_big.png" /></p>
+<div class="col three caption">
+  Kepler Core Architecture 그림
+</div>
+
+<p>위 그림은 CUDA Processor의 구조인데, 가운데 L2 Cache가 보이고 복잡해 보이는 15개의 네모의 집합이 보입니다.
+저 네모의 집합을 CUDA Multi-Processor라고 부릅니다. CUDA Multi-Processor는 CUDA Procesor에서 작업을 분할해서 처리하는 Processor로서 CUDA가 작업을 분할해서 처리하는 단위가 됩니다. 즉, CUDA Kernel을 실행했을때 각각의 CUDA Multi-Processor에게 작업이 분할됩니다.</p>
+
+<p>조금 더 상세히 보도록 하겠습니다. 아래 그림은 CUDA Multi-processor의 구조도입니다.</p>
+
+<p><img class="col two center" src="/images/201603/Kepler.png" /></p>
+<div class="col three caption">
+Kepler Multi-prcessor Architecture 그림 (<a href="https://www.youtube.com/watch?v=aAeK19iWda8">네모의 꿈?</a>)
+</div>
+
+<p>CUDA Programming에서 최적화의 상당부분은 이 CUDA Multi-Processor에 대하여 얼마나 최적화를 잘하느냐에서 결정됩니다. 따라서 언젠가는 각 요소에 대해서 알고 계셔야 하는데요, 여기서는 간략히 설명을 드리는 정도에서 다음으로 넘어가도록 하겠습니다.</p>
+
+<ul>
+  <li>Processing Units
+    <ul>
+      <li>Core
+        <ul>
+          <li>Single Point 연산을 수행하는 Processing Unit</li>
+          <li>Multi-Processor에서 많은 수를 차자하며 CUDA가 single floating 연산에 특히 강한 이유가 이 Core가 많기 때문입니다.</li>
+        </ul>
+      </li>
+      <li>DP Unit
+        <ul>
+          <li>Double Precision Units</li>
+          <li>Floating 연산에서 Double point 연산을 수행하는 Processing Unit 입니다. 정확도를 요구하는 계산에서 활용되며 수가 적은만큼 Kernel 수행시간이 길어집니다.</li>
+        </ul>
+      </li>
+      <li>SFU
+        <ul>
+          <li>Special Funciton Units</li>
+          <li>sin, cos, sqrt와 같은 특수한 연산에서 사용하는 core입니다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Control Units
+    <ul>
+      <li>Instruction Cache
+        <ul>
+          <li>CUDA Kernel의 명령어를 저장해 놓는 공간</li>
+          <li>CUDA Kernel 실행시 자동으로 Code가 이 부분으로 복사되며, CUDA Multi-Core processor는 개별적으로 이 Cache에서 Instruction을 읽어들여 연산을 수행합니다.</li>
+        </ul>
+      </li>
+      <li>Warp Scheduler
+        <ul>
+          <li>Warp은 CUDA에서 작업을 처리하는데 기준이 되는 Warp의 Scheduler</li>
+          <li>CUDA Block에서 Warp을 구성하고 CUDA Multi-Processor가 CUDA Block을 성공적으로 수행할 수 있도록 해줍니다.</li>
+        </ul>
+      </li>
+      <li>Dispatch
+        <ul>
+          <li>CUDA core의 성능을 최대한 높이기 위해서 CUDA Multi-Processor에는 하나의 Warp Scheduler 당 복수의 Dispatch를 갖고 있습니다. Dispatch의 역할은 CUDA Occupancy에 따라 동시에 수행가능한 Warp의 수만큼 CUDA 연산의 병렬성을 극대화 해주는 것입니다. 이를 최적화 하는 방법은 코딩에 정확한 숫자를 입력하기 보다는 CUDA Occupancy의 계산과 실험을 통해 코드를 구성하는 것이며, 최적화를 다루면서 더 상세히 다루도록 하겠습니다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Memory Units
+    <ul>
+      <li>Register File
+        <ul>
+          <li>CUDA Multi-Processor내 필요에 따라 CUDA Core가 나눠서 쓸 수 있는 Register 집합</li>
+          <li>Core에 따라 Register가 독점적으로 구성되어 있는 구조가 아니기에, CUDA Core가 Kernel 수행히 필요한 만큼 Register를 유연하게 Core가 사용할 수 있습니다.</li>
+          <li>Register Dependency에 의한 성능 저하도 최소한으로 줄일 수 있습니다.</li>
+        </ul>
+      </li>
+      <li>Shared Memory (L1 Cache)
+        <ul>
+          <li>Kernel Code에서 명시된 크기만큼 CUDA Block에서 공유해서 사용 할 수 있는 L1 Cache</li>
+          <li>Core에 독점적이지 않고, Core간에 데이터가 공유 됨</li>
+          <li>Locality가 높은 데이터 또는 Read/Write Buffer 등으로 유용함</li>
+        </ul>
+      </li>
+      <li>Read-Only Data Cache
+        <ul>
+          <li>읽기 전용 메모리, 커널 내 공유</li>
+          <li>Look-up Table을 구성하는데 유리</li>
+        </ul>
+      </li>
+      <li>Tex
+        <ul>
+          <li>읽기 전용 Pre-fetch Cache</li>
+          <li>CUDA Array를 활용하여 2D 또는 3D로 정렬되어있는 데이터를 효과적으로 읽는데 도움이 됨</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>이번 포스팅에서는 CUDA Core와 Thread Index간의 관계에 집중해서 설명할 것이므로, 구조에 대해서는 여기까지만 설명할 것입니다. CUDA Memory 구조와 성능에 대해서는 실제 예제를 통해 코딩을 해가면서 실제 사용 방법과 성능을 비교하면서 알아갈 것입니다.</p>
+
+<p><a id="CUDA Processor &amp; Thread"></a></p>
+
+<h1 id="cuda-thread-hierachy와-cuda-processor간의-관계">CUDA Thread Hierachy와 CUDA Processor간의 관계</h1>
+
+<p>CUDA Processor와 CUDA의 논리적인 구조는 다음과 같은 상관 관계가 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>CUDA Architecture</th>
+      <th>CUDA Logical Architecture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CUDA Processor</td>
+      <td>CUDA Kernel/Grid</td>
+    </tr>
+    <tr>
+      <td>CUDA Multi-Processor</td>
+      <td>복수의 CUDA Block</td>
+    </tr>
+    <tr>
+      <td>CUDA Core</td>
+      <td>CUDA Thread</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>앞 절에서 CUDA Kernel을 실행했을때 처리해야하는 작업을 CUDA Multi-Processor로 나눈다고 말씀을 드렸었습니다. 이때 작업을 나누는 단위는 CUDA Block의 단위로 나눠지며, 하나의 Multi-Processor는 복수의 CUDA Block들을 처리하게 됩니다. 뿐만 아니라 Warp Scheduler의 도움으로 여러개의 CUDA Block을 각각 순차적으로 처리하도록 할 수 있습니다. 그리고 CUDA Core는 각각 CUDA Thread를 처리합니다.</p>
+
+<p>특히 복수의 CUDA Block이 CUDA Multi-Processor에서 처리된다는 개념이 중요한데, 이는 CUDA Occupancy라는 최적화에서 중요한 개념과 관계가 있기 때문입니다. CUDA Occupance는 최적화에서 상세히 다루기로 하겠습니다.</p>
+
+<p>중요한 점은 CUDA의 하드웨어가 저렇게 계층적으로 구성이 되어 있으므로, CUDA 프로그래밍도 이 계층의 영향을 받는 다는 것입니다. 그것이 CUDA Block이란 개념이 생긴 배경이며, 이를 바탕으로 CUDA Index를 구성하게 됩니다.</p>
+
+<p><a id="CUDA Thread Index"></a></p>
+
+<h1 id="cuda-thread-index-구성">CUDA Thread Index 구성</h1>
+
+<p>CUDA Kernel을 개발하실때 주지해야 하는 사항은, 여러분이 짜는 CUDA 코드는 병렬적으로 처리되는 코드이지만, CUDA Thread 입장에서는 오직 하나의 Thread만이 동작하는 코드입니다. 따라서 CUDA Thread는 고유의 Index를 갖고 있으며, 이를 알아내기 위해서는 CUDA Thread Indexing Keyword에 대해서 알고 계셔야 합니다.</p>
+
+<p>CUDA Programming 모델을 설명하면서 CUDA Thread Index를 위한 키워드 들을 잠깐 설명했었습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>키워드</th>
+      <th>설명</th>
+      <th>차원</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>gridDim</td>
+      <td>Kernel의 block의 수</td>
+      <td>x, y</td>
+    </tr>
+    <tr>
+      <td>blockIdx</td>
+      <td>CUAD block의 인덱스</td>
+      <td>x, y</td>
+    </tr>
+    <tr>
+      <td>blockDim</td>
+      <td>CUDA block의 크기</td>
+      <td>x, y, z</td>
+    </tr>
+    <tr>
+      <td>threadIdx</td>
+      <td>CUDA 쓰레드의 인덱스</td>
+      <td>x, y, z</td>
+    </tr>
+    <tr>
+      <td>warpSize</td>
+      <td>CUDA Instruction이 동시에 처리가능한 CUDA 쓰레드 수</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위에서 장황하게 CUDA Architecture에 대해서 여러 설명을 하고 그것과 CUDA Block과 CUDA Thread 간의 관계를 설명했습니다. 이는 여기서 설명할 CUDA Thread Indexing의 논리적인 구성을 설명하기 위해서 필요했던 설명이며, 논리적인 구성만 생각해서 이해하셔도 무방합니다.</p>
+
+<p>에를 들어 설명하겠습니다.
+10 x 18 크기의 공간을 [4 x 4] 크기의 타일로 덮는다고 했을때 몇개의 타일이 필요할까요? 이때 Tile은 쪼갤 수 없으며, 공간을 덮기만 하면 됩니다.</p>
+
+<p><img class="col two center" src="/images/201603/Screen Shot 2016-04-10 at 1.54.18 PM.png" /></p>
+
+<p>이것을 우리는 block의 크기로 먼저 나눌 것입니다.</p>
+
+<p><img class="col two center" src="/images/201603/Screen Shot 2016-04-10 at 2.01.16 PM.png" /></p>
+
+<p>단순히 전체 갯수 나누기 block의 크기로 계산하면, $10 \times 18 / 4 / 4 = 11.25$개가 필요하므로 필요한 타일의 수는 11개 또는 12개라고 하실지도 모르겠습니다. 하지만 타일은 쪼갤 수 없다고 하였으므로 가로 5개, 세로 3개로 해서, [10 x 18]의 공간을 [4 x 4] 크기의 타일로 덮으려면 15개의 타일이 필요합니다.</p>
+
+<p>CUDA는 개념적으로 위 그림과 같이, A, B 등으로 라벨링한대로 지정된 CUDA Block의 크기에 맞춰서 데이터를 동시에 처리해줍니다. 그러다보면 C와 같이 데이터 경계를 넘어갈 수도 있습니다. CUDA에서는 이것을 CUDA Index 구성을 통해 우리가 원하는 형태로 CUDA Thread를 데이터에 매핑할 수 있습니다.</p>
+
+<p>만약 타일의 크기가 [8 x 2]라고 한다면 어떻게 될까요. $2 x 9 = 18$개가 될 것입니다.</p>
+
+<p>CUDA의 Grid의 크기를 계산하는 방법도 이와 비슷합니다. 처리해야하는 데이터를 적당한 크기로 자르는 것이죠.
+만약 [1920 x 1080] 크기의 데이터를 [16 x 16] 크기의 CUDA Block으로 나눠준다면 총 CUDA block의 수는 120 x 68개가 필요하게 됩니다.</p>
+
+<p>이 경우에 대하여, $width = 1920$, $height = 1080$, $block Width = 16$, $block Height = 16$이라고 할 수 있습니다.
+CUDA Keyword로는 다음과 같이 정리됩니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>GridDim.x</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <td>GridDim.y</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <td>BlockDim.x</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>BlockDim.y</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>여기서 우리는 BlockDim의 값을 [16, 16]이라고 정해줬듯이, Grid Dimension도 정해주어서 CUDA가 적절한 수의 CUDA Block을 생성할 수 있도록 해주어야하며, 데이터마다 CUDA block을 Mapping시켜서 처리하는 경우 다음과 같이 코드를 구성하시면 됩니다. 다만 아래 코드는 식을 보여드리기 위한 것이며, block의 크기는 앞서 CUDA Programming Model에서 설명했던 것 처럼 Kernel를 호출할때 제어 파라미터로 넘겨주셔야 합니다.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">grid_dimension</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">DATA_WIDTH</span> <span class="o">+</span> <span class="n">blockDim</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">blockDim</span><span class="p">.</span><span class="n">x</span>
+<span class="n">grid_dimension</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">DATA_HEIGHT</span> <span class="o">+</span> <span class="n">blockDim</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">blockDim</span><span class="p">.</span><span class="n">y</span></code></pre></figure>
+
+<p>위 코드가 복잡하다고 생각이 드시면 ceiling을 하시는 것도 좋습니다만, 같은 결과를 내는 것은 동일합니다.
+여하튼 위 코드처럼 하시면 CUDA block의 크기가 정해져 있는 상태에서 데이터의 크기가 변하는대로 CUDA block의 수도 가변적으로 적용되게 됩니다.</p>
+
+<p><code class="highlighter-rouge">blockIdx</code> 키워드는 우리가 앞서 쪼갰던 CUDA block의 위치를 의미하며, CUDA Thread는 자신이 속한 <code class="highlighter-rouge">blockIdx</code>의 값을 알고 있으므로 그냥 참조하시면 됩니다.</p>
+
+<p><code class="highlighter-rouge">threadIdx</code>는 CUDA block 내에서 존재하는 CUDA thread의 Index입니다. <code class="highlighter-rouge">blockIdx</code>와 마찬가지로 각각의 CUDA Thread는 자신만의 CUDA thread Index를 알고 있는데, 이는 상대적인 위치라고 할 수 있습니다. 다만, 이 때문에, CUDA Thread는 어떤 위치에 있는 데이터를 처리해야하는지 알기 위해선 절대적인 인덱스 주소값을 알아야 합니다.</p>
+
+<p>그래서 이전에 CUDA Programming 모델링에 대해서 설명드릴때 아래 표를 보여드리면서 CUDA Thread의 인덱싱은 이대로 한다고 말씀드렸던 것입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">인덱싱 종류</th>
+      <th style="text-align: left">코드</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1차원 데이터(x only)</td>
+      <td style="text-align: left">blockDim.x * blockIdx.x + threadIdx.x</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2차원 데이터(x, y)</td>
+      <td style="text-align: left">blockDim.x * blockIdx.x + threadIdx.x, blockDim.y * blockIdx.y + threadIdx.y</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2차원 데이터(x only)</td>
+      <td style="text-align: left">N.x * blockDim.y * blockIdx.y + N.x * threadIdx.y + blockDim.x * blockIdx.x + blockIdx.x</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위의 CUDA Indexing에 대한 예는 데이터 하나당 하나의 CUDA Thread를 매핑한 경우에 해당하는 것이며 필요에 따라서 다양하게 변형이 가능합니다. 만약 이렇게 하지 않으신다면, CUDA Thread 하나 당 데이터를 어떻게 처리할 것인지를 염두에 두고 Index를 수정하시면 보다 쉽게 필요한대로 CUDA Thread Index를 변형해서 사용하실 수 있습니다.</p>
+
+<p>혹시나 질문이 있으시거나 이해가 가지 않는 부분이 있다면 알려주세요.</p>
+
+<p>다음부터는 CUDA 메모리 별로 예제 코드를 갖고 설명을 드리도록 하겠습니다.</p>
+
+  </article>
+
+  <section class="share">
+    <h3>Share</h3>
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20http://localhost:4000/cuda/2016/03/31/cuda-processor.html%20via%20&#64;haanjack&hashtags=CUDA Programming,CUDA Architecture,"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/cuda/2016/03/31/cuda-processor.html"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+        <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=http://localhost:4000/cuda/2016/03/31/cuda-processor.html"
+    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+        <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
+    </a>
+</section>
+  <section class="comments">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+    var disqus_loaded = false;
+
+    function load_disqus()
+    {
+        disqus_loaded = true;
+        var disqus_shortname = 'haanjack';
+        var disqus_title = '';
+        var disqus_url = '/cuda/2016/03/31/cuda-processor.html';
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ldr = document.getElementById('disqus_loader');
+    };
+    window.onscroll = function(e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 800)) {
+            //hit bottom of page
+            if (disqus_loaded==false)
+                load_disqus()
+        }
+    };
+</script>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+  	<p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> and is hosted on <a href="https://github.com" target="_blank">Github</a>.  Theme from <a href="https://github.com/bogoli/-folio" target="_blank">folio</a> by Lia Bogoev, MIT Licence. &#169; 2016.</p>
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
