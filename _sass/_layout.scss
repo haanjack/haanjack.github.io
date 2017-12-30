@@ -13,7 +13,7 @@ height:56px;
 width:100%;
 z-index: 50;
   @include media-query($on-palm) {
-    height: 76px;
+    height: 66px;
   }
 }
 
@@ -28,6 +28,10 @@ z-index: 50;
     text-decoration: none;
     color: $theme-color;
   }
+  @include media-query($on-palm) {
+    line-height: -webkit-calc((#{$nav-height}) - 15px);
+    line-height:         calc((#{$nav-height}) - 15px);
+  }
 }
 .site-description {
   font-size: 20px;
@@ -36,6 +40,10 @@ z-index: 50;
   letter-spacing: -1px;
   margin-bottom: 0;
   display: inline-block;
+  @include media-query($on-palm) {
+    line-height: -webkit-calc((#{$nav-height}) - 15px);
+    line-height:         calc((#{$nav-height}) - 15px);
+  }
 }
 .site-nav {
   float: right;
@@ -50,7 +58,7 @@ z-index: 50;
   }
   @include media-query($on-palm) {
     position: fixed;
-    top: 30px;
+    top: 20px;
     right: 10px;
     text-align: right;
     display: block;
