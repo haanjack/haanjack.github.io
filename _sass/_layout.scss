@@ -12,18 +12,21 @@ top:0px;
 height:56px;
 width:100%;
 z-index: 50;
+  @include media-query($on-palm) {
+    height: 76px;
+  }
 }
 
 .site-title {
-font-size: 20px;
-line-height: $nav-height;
-font-weight: 600;
-letter-spacing: -1px;
-margin-bottom: 0;
-display: inline-block;
-&:hover {
-text-decoration: none;
-color: $theme-color;
+  font-size: 20px;
+  line-height: $nav-height;
+  font-weight: 600;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  display: inline-block;
+  &:hover {
+    text-decoration: none;
+    color: $theme-color;
   }
 }
 .site-description {
@@ -35,29 +38,30 @@ color: $theme-color;
   display: inline-block;
 }
 .site-nav {
-float: right;
-line-height: $nav-height;
-display: inline-block;
-.page-link{
-line-height: $base-line-height;
-        // Gaps between nav items, but not on the first one
-&:not(:first-child) {
-margin-left: 10px;
-        }
+  float: right;
+  line-height: $nav-height;
+  display: inline-block;
+  .page-link {
+    line-height: $base-line-height;
+    // Gaps between nav items, but not on the first one
+    &:not(:first-child) {
+      margin-left: 6px;
     }
-@include media-query($on-palm) {
-position: fixed;
-top: 0px;
-right: 10px;
-text-align: right;
-&:hover .trigger {
-display: block;
-padding-bottom: 5px;
-        }
-.page-link {
-display: line;
-        }
+  }
+  @include media-query($on-palm) {
+    position: fixed;
+    top: 30px;
+    right: 10px;
+    text-align: right;
+    display: block;
+    &:hover .trigger {
+      display: block;
+      padding-bottom: 5px
     }
+    .page-link {
+      display: line
+    }
+  }
 }
 
 .header-bar{
@@ -180,7 +184,7 @@ p {
 }
 .post-content {
 margin: auto;
-width: 800px;
+max-width: 800px;
 h1 {
 margin: 0.5rem auto 1rem;
 font-weight: 600;
