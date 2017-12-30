@@ -318,7 +318,7 @@ display: block;
   &:hover {
     text-decoration: none;
     color: #FFFFFF;
-    background-color: #2aa016;
+    background-color: $theme-color;
     border-radius: 3px;
   }
 }
