@@ -1,6 +1,5 @@
 ---
 layout: default
-title: About
 ---
 
 <div class="header-bar">

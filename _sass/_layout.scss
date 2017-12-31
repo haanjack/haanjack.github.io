@@ -24,13 +24,16 @@ z-index: 50;
   letter-spacing: -1px;
   margin-bottom: 0;
   display: inline-block;
+  color: $theme-color;
   &:hover {
     text-decoration: none;
-    color: $theme-color;
   }
   @include media-query($on-palm) {
     line-height: -webkit-calc((#{$nav-height}) - 15px);
     line-height:         calc((#{$nav-height}) - 15px);
+  }
+  a {
+    transition: color 0.6s ease;
   }
 }
 .site-description {
@@ -43,6 +46,9 @@ z-index: 50;
   @include media-query($on-palm) {
     line-height: -webkit-calc((#{$nav-height}) - 15px);
     line-height:         calc((#{$nav-height}) - 15px);
+  }
+  a {
+    transition: color 0.6s ease;
   }
 }
 .site-nav {
@@ -69,6 +75,9 @@ z-index: 50;
     .page-link {
       display: line
     }
+  }
+  a {
+    transition: color 0.6s ease;
   }
 }
 
@@ -175,7 +184,7 @@ line-height: 1;
 margin-bottom: 0;
 font-weight: 400;
 color: $text-color;
-transition: color 1s ease;
+transition: color 0.6s ease;
 p {
   font-size: 32px;
   font-weight: 500;
@@ -335,6 +344,7 @@ display: block;
   padding: 5px;
   h2 {
     color: $theme-color;
+    font-weight: 400;
   }
 }
 .tag-item {
