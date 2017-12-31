@@ -286,16 +286,18 @@ pre {
 table {
   margin: 1.25rem auto;
   border-collapse:collapse;
-  border-spacing:0;
+  border-spacing: 0;
+  border: 1px;
 }
 table td {
   padding:.313rem .6rem;
-  border-bottom:1px solid #ccc;
+//  border-bottom:1px solid #ccc;
+  border: 1px solid #ccc;
 }
 table th {
   padding:.313rem;
-  border-bottom: 3px solid #ccc;
-//  background-color: #97C4E6;
+  border: 1px solid #ccc;
+  background-color: #ddd;
 }
 
 /**
