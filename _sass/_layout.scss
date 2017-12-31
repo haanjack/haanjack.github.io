@@ -141,7 +141,8 @@ padding: 100px 0; /* VERTICAL PADDING FOR TITLE ON EVERY PAGE */
 font-size: 20px;
 }
 .post-list {
-margin: 5px 0;
+margin-left: auto;
+margin-right: auto;
 list-style: none;
     > li {
 margin-bottom: $vertical-spacing-unit;
