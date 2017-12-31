@@ -14,7 +14,7 @@ disqus_username: haanjack
 # Build settings
 markdown: kramdown
 
-highlighter: rouge
+highlighter: linguist
 
 # Pagination
 plugins: ['jekyll-paginate', 'jekyll-mermaid']
@@ -22,7 +22,6 @@ paginate: 15
 paginate_path: "/blog/page:num/"
 mermaid:
   src: '/scripts/mermaid.js'
-
 
 collections:
    nvidia:
