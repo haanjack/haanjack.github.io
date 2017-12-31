@@ -1,10 +1,10 @@
 ---
 layout: default
-permalink: /about/
+title: About
 ---
 
 <div class="header-bar">
-  <h1>*About</h1>
+  <h1>*about</h1>
   <img class="col one center img-rounded" src="/img/blog-author.jpg" width="200" height="200">
   <br/>
   <hr>
@@ -19,27 +19,7 @@ permalink: /about/
 * 서울대학교 컴퓨터공학과 통합설계 및 병렬처리연구실
 * 한양대학교 정보통신대학 미디어통신공학과
 
-<!--
-<div class="tags">
-{% assign tags_list = site.tags %}
-  {% if tags_list.first[0] == null %}
-    {% for tag in tags_list %}
-        <a data-scroll href="#{{ tag | slugify }}">{{ tag }}</a>
-    {% endfor %}
-  {% else %}
-    {% for tag in tags_list %}
-        <a data-scroll href="#{{ tag[0] | slugify }}">{{ tag[0] }}</a>
-    {% endfor %}
-  {% endif %}
-{% assign tags_list = nil %}
-</div>
--->
-
-<br/>
-
 <hr/>
-<br/>
-
 
 <div class="contacticon center">
   <!-- Google Authorship Markup -->
