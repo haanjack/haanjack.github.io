@@ -169,7 +169,7 @@ pre,
 code {
     font-size: 15px;
     border-radius: 3px;
-    background-color: $grey-color-light;
+    // background-color: $grey-color-light;
 }
 
 code {
@@ -186,8 +186,6 @@ pre {
         padding-left: 0;
     }
 }
-
-
 
 /**
  * Wrapper
@@ -303,14 +301,22 @@ table th {
 /**
  * Code Table
  */
-.highlight tbody th, .highlight tbody td
+.highlight tbody th, .highlight tbody td, .highlight tbody pre
 {
   border: none;
-  margin: 0;
-
+  margin: 0px;
+  padding: 0px;
 }
 .highlight code table {
-  margin: 0 auto 0 0;
+  margin: 0;
+}
+.highlight pre {
+  padding: 5 0 5 10;
+}
+table tbody .gl {
+  padding-right: 10px;
+  // width: 26px;
+  text-align: right;
 }
 
 /**

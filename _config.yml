@@ -13,8 +13,13 @@ disqus_username: haanjack
 
 # Build settings
 markdown: kramdown
-
-highlighter: linguist
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
 
 # Pagination
 plugins: ['jekyll-paginate', 'jekyll-mermaid']
