@@ -18,7 +18,7 @@ $nav-height:                    56px;
 /* portfolio tinkering */
 $img_spacing: 5px;
 $img_height: 275px;
-$caption_font_size: 16px;
+$caption_font_size: $base-font-size;
 $caption_color: #aaa;
 
 /* COLORS  */
@@ -35,7 +35,7 @@ $grey-color-light: #ddd;  /* navigation bar border */
 $text-color:     #666;
 
 /* Set theme color *************************/
-$theme-color:   $orange;
+$theme-color:   $lime_green;
 
 
 /************************************************************/
@@ -317,6 +317,10 @@ table tbody .gl {
   padding-right: 10px;
   // width: 26px;
   text-align: right;
+}
+.post-content pre {
+  background-color: #002b36;
+  color: #93a1a1;
 }
 
 /**

@@ -3,8 +3,8 @@ layout: default
 ---
 
 <div class="header-bar">
-  <h1>*hanjack</h1>
-  <h2>EXPERIENTIA DOCET</h2>
+  <div class="title">*hanjack</div>
+  <div class="description">EXPERIENTIA DOCET</div>
   <br/>
   <hr>
   <br/>
@@ -13,7 +13,7 @@ layout: default
 <div class="post-list">
     {% for post in paginator.posts %}
       <li>
-        <h2><a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+        <a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         <p class="post-meta">{{ post.description }}</p>
         <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
         <p class="post-meta">{% include post_tags.html %}</p>
