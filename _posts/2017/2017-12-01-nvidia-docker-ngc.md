@@ -170,7 +170,8 @@ docker pull nvcr.io/nvidia/caffe:17.12
 이 Container에는 NVIDIA에서 준비한 예제 코드들이 들어가져 있어서 바로 시험을 해볼 수 있다. ()테스트 조건은 Resnet50 이용, Batch Size는 64, GPU는 4개 사용)
 
 {% highlight bash %}
-nvidia-docker run --rm -ti nvcr.io/nvidia/tensorflow:17.12 ./nvidia-examples/cnn/nvcnn.py -m resnet50 -b 64 -g 4
+nvidia-docker run --rm -ti nvcr.io/nvidia/tensorflow:17.12 \
+    ./nvidia-examples/cnn/nvcnn.py -m resnet50 -b 64 -g 4
 {% endhighlight %}
 
 그러면 아래와 같은 화면이 나온다.
