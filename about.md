@@ -3,10 +3,8 @@ layout: default
 ---
 
 <div class="header-bar">
-  <h1>*about</h1>
+  <div class="title">*about me,</div>
   <img class="col one center img-rounded" src="/img/blog-author.jpg" width="200" height="200">
-  <br/>
-  <hr>
   <br/>
 </div>
 
