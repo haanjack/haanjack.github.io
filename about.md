@@ -10,16 +10,6 @@ layout: default
   <br/>
 </div>
 
-# Foot Notes
-
-* NVIDIA Korea - Solutions Architect **(Current)**
-* 현대중공업 - 수술용 로봇 개발
-* 삼성메디슨 - 초음파 기기 제어 및 영상처리 모듈 개발
-* 서울대학교 컴퓨터공학과 통합설계 및 병렬처리연구실
-* 한양대학교 정보통신대학 미디어통신공학과
-
-<hr/>
-
 <div class="contacticon center">
   <!-- Google Authorship Markup -->
   <link rel="author" href="https://plus.google.com/+{{site.gplus_username}}?rel=author">
@@ -83,3 +73,14 @@ layout: default
 <div class="col three caption">
 I am best reachable by email: haanjack (at) gmail (dot) com
 </div>
+
+# Foot Notes
+
+* NVIDIA Korea - Solutions Architect *(Current)*
+* 현대중공업 - 수술용 로봇 개발
+* 삼성메디슨 - 초음파 기기 제어 및 영상처리 모듈 개발
+* 서울대학교 컴퓨터공학과 통합설계 및 병렬처리연구실
+* 한양대학교 정보통신대학 미디어통신공학과
+
+<br>
+<hr/>
