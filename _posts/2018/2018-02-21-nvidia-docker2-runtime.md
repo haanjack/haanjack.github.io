@@ -76,4 +76,6 @@ services:
 그렇다면 이것으로 docker orchestration을 할 수 있는 길이 열렸다고 볼 수 있겠다.
 당장 나는 [pycharm](https://www.jetbrains.com/help/pycharm/docker-using-docker-as-a-remote-interpreter.html)을 붙였는데, [Kubernetes](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/)도 붙여볼 생각이다.
 
+덧,
+pycharm에 붙여서 사용하는 방법은 현실적으로 local과 remote를 구분해서 쓰는 것이 맞는 것 같기도 하다. ([참고글](http://killianlevacher.github.io/blog/posts/post-2016-07-22/post.html))
 <br>
