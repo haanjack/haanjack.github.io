@@ -3,7 +3,7 @@ layout: post
 title:  "NVLINK monitoring"
 description: "NVLINK가 있는 장비에서 nvlink 사용 확인하기"
 date: 2018-03-24
-published: false
+published: true
 categories: gpu
 tags:
  - nvlink
