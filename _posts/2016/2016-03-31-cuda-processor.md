@@ -4,7 +4,7 @@ title:  "CUDA 프로세서에 대한 이해"
 date:   2016-03-31 1:00:00
 categories: CUDA Programming
 description: CUDA 프로그래밍을 위한 Architecture 이해 및 Thread Index 설계
-publish: false
+published: false
 categories: CUDA
 tags:
 - CUDA Programming

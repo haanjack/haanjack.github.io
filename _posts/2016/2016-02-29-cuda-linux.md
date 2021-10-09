@@ -2,7 +2,7 @@
 layout: post
 title:  "Ubuntu에 CUDA 설치"
 date:   2016-02-29 0:00:00
-publish: false
+published: false
 categories: CUDA
 tags:
 - CUDA 7.5
