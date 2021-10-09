@@ -3,7 +3,7 @@ layout: post
 title:  "CUDA GPU 메모리"
 date:   2016-04-10 4:18:00
 description: CUDA GPU 메모리의 종류 및 활용법
-publish: true
+publish: false
 categories: CUDA
 tags:
  - CUDA Programming

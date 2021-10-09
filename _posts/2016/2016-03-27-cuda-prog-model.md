@@ -4,7 +4,7 @@ title:  "CUDA 프로그래밍 모델"
 date:   2016-03-27 1:00:00
 categories: CUDA Programming
 description: CUDA 프로그래밍을 위한 기초 개념
-publish: true
+publish: false
 categories: CUDA
 tags:
 - CUDA Programming
