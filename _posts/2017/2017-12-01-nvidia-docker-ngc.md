@@ -3,7 +3,7 @@ layout: post
 title:  "Docker를 활용한 deep learning 개발 환경 구축"
 description: "Ubuntu 환경에서 docker를 이용하여 10분 안에 deep learning 시작하기"
 date:   2017-12-01
-published: true
+published: false
 categories: docker
 tags:
  - docker

@@ -3,7 +3,7 @@ layout: post
 title:  "nvidia-docker를 이용해서 GPU 나눠 쓰기"
 description: "여럿이 나눠써야 하거나, 작업에 따라 구분해서 써야 할 경우"
 date:   2018-04-14
-published: true
+published: false
 categories: docker
 tags:
  - docker

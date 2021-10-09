@@ -3,7 +3,7 @@ layout: post
 title:  "docker 명령 만으로 nvidia-docker 사용하는 방법"
 description: "6 글자를 치는 것이 너무 힘들어서 쓰는 글"
 date:   2018-02-21
-published: true
+published: false
 categories: docker
 tags:
  - docker
