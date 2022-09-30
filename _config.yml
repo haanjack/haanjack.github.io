@@ -1,9 +1,28 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you: 
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
 # Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
 title: EXPERIENTIA DOCET
-description: > # this means to ignore newlines until "baseurl:"
+description: >- # this means to ignore newlines until "baseurl:"
   haanjack
-baseurl:  # the subpath of your site, e.g. /blog/
-url: # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 email: haanjack@gmail.com
 facebook_username: haanjack
 twitter_username: haanjack
@@ -12,6 +31,22 @@ gplus_username:  haanjack
 disqus_username: haanjack
 
 # Build settings
+# theme: minima
+plugins: 
+  - 'jekyll-paginate'
+  - 'jekyll-mermaid'
+  - 'jekyll-polyglot'
+paginate: 15
+paginate_path: "/blog/page:num/"
+mermaid:
+  src: '/scripts/mermaid.js'
+languages:
+  - 'ko'
+  - 'en'
+default_lang: 'ko'
+exclude_from_localization: ['javascript', 'images', 'css']
+parallel_localization: false
+
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
@@ -21,23 +56,22 @@ kramdown:
     block:
       line_numbers: true
 
-# Pagination
-plugins: ['jekyll-paginate', 'jekyll-mermaid']
-paginate: 15
-paginate_path: "/blog/page:num/"
-mermaid:
-  src: '/scripts/mermaid.js'
-
-collections:
-   nvidia:
-     output: true
-     permalink: /nvidia/:path/
-  # metal:
-  #  output: true
-  #  permalink: /metal/:path/
-  # portfolio:
-  #   output: false
-  #   permalink: /portfolio/:path/
-  #poetry:
-  #    output: true
-  #    permalink: /poetry/:path/
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
