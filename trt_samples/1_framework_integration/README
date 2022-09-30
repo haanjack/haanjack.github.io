@@ -1,7 +1,0 @@
-TensorRT model import workflow samples
-
-Download TensorRT from https://developer.nvidia.com/tensorrt.
-
-To work with Tensorflow, install tensorrt where tensorflow is installed.
-Also, You will need tensorflow checkpoint files and their frozen models. Use "tf_model_freezing.ipynb" to do that.
-
