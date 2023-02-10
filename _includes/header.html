@@ -12,15 +12,19 @@
 
         {% for page in site.pages %}
           {% if page.title %}
-            {% if forloop.index != 1 %}
-            |
+            {% if page.title != "search" %}
+              {% if forloop.index != 1 %}
+              |
+              {% endif %}
+              <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>&nbsp;
             {% endif %}
-            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>&nbsp;
           {% endif %}
         {% endfor %}
-
+        <a class="page-link" href="{{ site.baseurl }}/search.html">
+          <img src="{{ site.baseurl }}/img/search.svg" type="image/svg+xml" width="14" height="14" />
+        </a>
       </div>
     </nav>
-  </div>
+  </div> 
 
 </header>

@@ -1,26 +1,28 @@
 ---
 layout: default
-title: 
+title: search
 ---
 
 <div class="header-bar">
-  <div class="title">*tags</div>
-  <div class="description">&nbsp;</div>
+  <div class="title">*search</div>
+  <div class="description">Search</div>
   <br/>
   <hr>
   <br/>
 </div>
 
 <ul class="tag-cloud">
-{% for tag in site.tags %}
-  <span style="font-size: {{ tag | last | size | times: 100 | divided_by: site.tags.size | plus: 80  }}%">
-    <a href="#{{ tag | first | slugize }}" class="tag-item">
-      {{ tag | first }}
-    </a> &nbsp;&nbsp;
-  </span>
-{% endfor %}
+  {% for tag in site.tags %}
+    <span style="font-size: {{ tag | last | size | times: 100 | divided_by: site.tags.size | plus: 80  }}%">
+      <a href="#{{ tag | first | slugize }}" class="tag-item">
+        {{ tag | first }}
+      </a> &nbsp;&nbsp;
+    </span>
+  {% endfor %}
 </ul>
 
+{% include search-lunr.html %}
+  
 <hr>
 
 <div id="archive">
