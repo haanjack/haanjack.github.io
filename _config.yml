@@ -31,7 +31,6 @@ gplus_username:  haanjack
 disqus_username: haanjack
 
 # Build settings
-# theme: minima
 plugins: 
   - 'jekyll-paginate'
   - 'jekyll-mermaid'
