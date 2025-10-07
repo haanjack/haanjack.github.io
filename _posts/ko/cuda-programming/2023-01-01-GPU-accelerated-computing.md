@@ -29,7 +29,7 @@ GPU가 CPU와 비교하여 연산성능에서 장점을 갖는 이유는 더 많
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/cuda/what-a-gpu-does-pic-768x489.png" title="What a gpu does" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/cuda/what-a-gpu-does-pic-768x489.png" title="What a gpu does" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
