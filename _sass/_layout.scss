@@ -7,7 +7,12 @@ body {
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     scroll-margin-top: 66px;
   }
 }
@@ -35,56 +40,14 @@ body.sticky-bottom-footer {
 
 // TODO: redefine content layout.
 
-
 /******************************************************************************
  * Publications
  ******************************************************************************/
 
 // TODO: redefine publications layout.
 
-
 /*****************************************************************************
 * Projects
 *****************************************************************************/
 
 // TODO: redefine projects layout.
-
-/*****************************************************************************
- * Search
- *****************************************************************************/
-
-.search-icon {
-  margin-left: -40px;
-  display: inline-block;
-  margin-top: 5px;
-  cursor: pointer;
-}
-
-.form-control {
-  font-size: 0.8rem;
-  border-radius: 30px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  height: 36px;
-  min-width: 180px;
-}
-
-.form-control::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, .5);
-}
-
-.form-control:-moz-placeholder {
-  color: rgba(0, 0, 0, .5);
-}
-
-.form-control::-moz-placeholder {
-  color: rgba(0, 0, 0, .5);
-}
-
-.form-control:-ms-input-placeholder {
-  color: rgba(0, 0, 0, .5);
-}
-
-.form-control::-ms-input-placeholder {
-  color: rgba(0, 0, 0, .5);
-}
