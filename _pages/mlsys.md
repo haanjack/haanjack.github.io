@@ -1,18 +1,23 @@
 ---
 layout: page
 permalink: /mlsys/
-title: MLSys
-description: Materials for courses you taught. Replace this text with your description.
+title: mlsys
+description: MLsys posts - GPU and HPC
 nav: true
-nav_order: 2
+nav_order: 1
 ---
 
 ---
 
+<style>
+  .post-item { display: none; }
+</style>
+
+{{ page.lang }}
 <div class="post-list">
   {% for post in site.posts %}
-    {% if post.taxonomy contains "mlsys" %}
-      <li>
+    {% if post.taxonomy contains "cuda" %}
+      <li class="post-item" data-lang="{{ post.lang }}">
       <h3>
         {% if post.redirect == blank %}
           <a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -23,7 +28,7 @@ nav_order: 2
               <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           {% else %}
-            <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
+              <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
           {% endif %}
         {% endif %}
       </h3>
@@ -54,8 +59,8 @@ nav_order: 2
               <i class="fas fa-tag fa-sm"></i> {{ category }}</a> &nbsp;
               {% endfor %}
           {% endif %}
-    </p>
-    </li>
+      </p>
+      </li>
     {% endif %}
   {% endfor %}
 </div>

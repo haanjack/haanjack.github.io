@@ -2,7 +2,7 @@
 layout: page
 permalink: /search/
 title: search
-nav: true
+nav: false
 nav_order: 7
 ---
 

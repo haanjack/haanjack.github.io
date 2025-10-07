@@ -1,8 +1,10 @@
 ---
 layout: about
 title: about
-permalink: /
-subtitle: <a href='#'>Machine Learning Engineer</a>
+nav: true
+nav_order: 3
+permalink: /about
+subtitle: <a href='#'>about me</a>
 
 profile:
   align: right
@@ -17,7 +19,7 @@ social: true  # includes social icons at the bottom of the page
 <H3>Expericia Docet</H3>
 
 Hi,
-I'm a AI & Data Center GPU Solutions Architect at AMD.
+I'm a AI Solutions Architect focusing on Insinct GPU at AMD.
 I'm passionated in AI, Accelerated Heterogeneous Computing, HPC, and GPU programming.
 
 Previously, I was a LLM engineer at NAVER and Solutions Architect at NVIDIA.
@@ -32,13 +34,13 @@ I also authored a CUDA programming book - Learn CUDA programming - with Bharatku
           <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
           <div>
           {% if entry.type == "list" %}
-            {% include cv/list.html %}
+            {% include cv/list.liquid %}
           {% elsif entry.type == "map" %}
-            {% include cv/map.html %}
+            {% include cv/map.liquid %}
           {% elsif entry.type == "nested_list" %}
-            {% include cv/nested_list.html %}
+            {% include cv/nested_list.liquid %}
           {% elsif entry.type == "time_table" %}
-          {% include cv/time_table.html %}
+          {% include cv/time_table.liquid %}
           {% else %}
             {{ entry.contents }}
           {% endif %}
