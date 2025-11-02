@@ -173,7 +173,7 @@ exclude:
   - _news/announcement_*.md
   - _pages/blog.md
   - _posts/
-  - _projects/?_project.md
+  - _projects/*_project.md
   - assets/jupyter/blog.ipynb
 ```
 
