@@ -43,6 +43,16 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies (ImageMagick & Jupyter)
+        run:
+          # ImageMagick install (convert command)
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+          pip install jupyter nbconvert # Jupyter install (Jupyter Notebook converter)
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
