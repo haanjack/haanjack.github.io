@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use "sass:string";
+
 // specific icon class definition
 // -------------------------
 
@@ -6,8 +9,7 @@ readers do not read off random characters that represent icons */
 
 @each $name, $icon in $fa-icons {
   .#{$fa-css-prefix}-#{$name} {
-    #{$fa-icon-property}: unquote("\"#{ $icon }\"");
-    #{$fa-duotone-icon-property}: unquote("\"#{$icon}#{$icon}\"");
+    #{$fa-icon-property}: string.unquote("#{ $icon }");
+    #{$fa-duotone-icon-property}: string.unquote("#{#{$icon}#{$icon}}");
   }
 }
-
