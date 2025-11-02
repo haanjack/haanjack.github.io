@@ -16,14 +16,14 @@ news: false  # includes a list of news items
 social: true  # includes social icons at the bottom of the page
 ---
 
-<H3>Expericia Docet</H3>
+### Experientia Docet
 
 Hi,
-I'm a AI Solutions Architect focusing on Insinct GPU at AMD.
-I'm passionated in AI, Accelerated Heterogeneous Computing, HPC, and GPU programming.
+I'm an AI Solutions Architect focusing on Instinct GPU at AMD.
+I'm passionate about AI, Accelerated Heterogeneous Computing, HPC, and GPU programming.
 
-Previously, I was a LLM engineer at NAVER and Solutions Architect at NVIDIA.
-I also authored a CUDA programming book - Learn CUDA programming - with Bharatkumar Sharma published from Packt pub.
+Previously, I was an LLM engineer at NAVER and a Solutions Architect at NVIDIA.
+I also authored a CUDA programming book, "Learn CUDA Programming", with Bharatkumar Sharma, published by Packt Publishing.
 
 <!-- CV -->
 <details>
