@@ -48,11 +48,12 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install dependencies (ImageMagick & Jupyter)
-        run:
-          # ImageMagick install (convert command)
+        run: |
+        # ImageMagick instaindentation ll (convert command)
           sudo apt-get update
           sudo apt-get install -y imagemagick
-          pip install jupyter nbconvert # Jupyter install (Jupyter Notebook converter)
+          # Jupyter install (Jupyter Notebook converter)
+          pip install jupyter nbconvert
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
