@@ -1,0 +1,25 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Dimensions
+$max-content-width: {{ site.max_width }};
+
+@use "variables" as *;
+@use "themes" as *;
+@use "layout" with (
+  $max-content-width: $max-content-width
+);
+@use "base";
+@use "distill";
+@use "cv";
+@use "tabs";
+@use "typograms";
+@use "font-awesome/fontawesome";
+@use "font-awesome/brands";
+@use "font-awesome/solid";
+@use "font-awesome/regular";
+@use "tabler-icons/tabler-icons";
+@use "tabler-icons/tabler-icons-filled";
+@use "tabler-icons/tabler-icons-outline";
