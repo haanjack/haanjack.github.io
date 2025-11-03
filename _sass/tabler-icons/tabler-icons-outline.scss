@@ -1,4 +1,3 @@
-@use "sass:string";
 @charset "UTF-8";
 /*!
  * Tabler Icons 3.20.0 by tabler - https://tabler.io
@@ -34,7 +33,7 @@ $ti-prefix: 'ti' !default;
 }
 
 @function unicode($str) {
-  @return string.unquote("\"")+string.unquote(string.insert($str, "\\", 1))+string.unquote("\"")
+  @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"")
 }
 
 
@@ -9857,3 +9856,4 @@ $ti-icon-zzz-off: unicode('f440');
 .#{$ti-prefix}-message-circle-2:before { content: $ti-icon-message-circle; }
 .#{$ti-prefix}-mood-suprised:before { content: $ti-icon-mood-surprised; }
 .#{$ti-prefix}-circle-dashed-letter-letter-v:before { content: $ti-icon-circle-dashed-letter-v; }
+

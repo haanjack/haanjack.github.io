@@ -6,6 +6,6 @@
 // V4 shims compile (Web Fonts-based)
 // -------------------------
 
-@use 'functions' as *;
-@use 'variables' as *;
+@import 'functions';
+@import 'variables';
 @import 'shims';
